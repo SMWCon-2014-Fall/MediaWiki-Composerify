@@ -16,7 +16,35 @@ To make MediaWiki extensions installable via Composer, the following steps must 
 Modify main extension file
 --------------------------
 
-To-do: Construct proper regex to convert variable naming
+Goal: Construct proper regex to convert variable naming
+
+
+To find PHP variables, use the following regex:
+
+```
+\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)
+```
+
+
+
+However, we do NOT want to match any variables already defined using $GLOBALS, so we must exclude this particular variable. I think we also need to exclude any $_GET, $_POST, $_SERVER, or other super-globals, but for the initial version of this script I will not be handling them since these should not be present in MediaWiki extensions.
+
+To exclude $GLOBALS the following regex can be used:
+
+```
+\$(?!GLOBALS)([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)
+```
+
+Each match can then be replaced with:
+
+```
+$GLOBALS['$1']
+```
+
+This works well for many variables, but fails for variables not intended to be global. Most notably, if functions are defined within the ExtensionName.php file then any variables within those functions should not be converted.
+
+How to handle this scenario? TBD...
+
 
 Create a composer.json file
 ---------------------------
