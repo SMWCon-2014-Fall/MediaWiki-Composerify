@@ -8,10 +8,10 @@ Purpose
 
 To make MediaWiki extensions installable via Composer, the following steps must be followed:
 
-# Modify the main extension file (e.g. ExtensionName.php) to change all $wgVariableName global variables to $GLOBALS['wgVariableName']
-# Create a composer.json file with information pull from main extension file
-# Submit patch to main repository (Gerrit or GitHub as required)
-# Create corresponding Packagist.org package (e.g. mediawiki/extension-name)
+1. Modify the main extension file (e.g. ExtensionName.php) to change all $wgVariableName global variables to $GLOBALS['wgVariableName']
+2. Create a composer.json file with information pull from main extension file
+3. Submit patch to main repository (Gerrit or GitHub as required)
+4. Create corresponding Packagist.org package (e.g. mediawiki/extension-name)
 
 Modify main extension file
 --------------------------
