@@ -1,0 +1,21 @@
+{
+	"name": "mediawiki/$hyphenExtensionName",
+	"type": "mediawiki-extension",
+	"description": "A MediaWiki extension",
+	"keywords": [
+		"MediaWiki",
+	],
+	"homepage": "$extensionHomepage",
+	"license": "Unknown",
+
+	"authors": [
+	],
+
+	"support": {},
+	"require": {
+		"composer/installers": ">=1.0.1"
+	},
+	"autoload": {
+		"files": ["$extensionName.php"]
+	}
+}
